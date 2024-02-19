@@ -1,0 +1,86 @@
+﻿<Window x:Class="Boxes.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Boxes"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <TabControl>
+            <TabItem Header="Текущее задание">
+                <Grid x:Name="MissionGrid"  Background="#FFE5E5E5">
+                    <Grid.RowDefinitions>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+
+                    </Grid.ColumnDefinitions>
+                    <Label Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="4"  Content="ЗАДАНИЕ НА РАСКЛАДКУ" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    <Label Grid.Column="0" Grid.Row="1"   Content="Продукт" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    <Label Grid.Column="0" Grid.Row="2"   Content="GTIN" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    <Label Grid.Column="0" Grid.Row="3"   Content="Объем" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    <Label Grid.Column="0" Grid.Row="4"   Content="Формат короба" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    <Label Grid.Column="0" Grid.Row="5"   Content="Формат паллет" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+
+                    <TextBox TextAlignment="Center"  Grid.Column="1" Grid.Row="1" Margin="0" TextWrapping="Wrap" Text="{Binding Name}" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"/>
+                    <TextBox TextAlignment="Center"  Grid.Column="1" Grid.Row="2" Margin="0" TextWrapping="Wrap" Text="{Binding GTIN}" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"/>
+                    <TextBox TextAlignment="Center"  Grid.Column="1" Grid.Row="3" Margin="0" TextWrapping="Wrap" Text="{Binding Volume}" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"/>
+                    <TextBox TextAlignment="Center"  Grid.Column="1" Grid.Row="4" Margin="0" TextWrapping="Wrap" Text="{Binding BoxFormat}" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"/>
+                    <TextBox TextAlignment="Center"  Grid.Column="1" Grid.Row="5" Margin="0" TextWrapping="Wrap" Text="{Binding PalletFormat}" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"/>
+
+                    <Button Grid.Column="0" Grid.Row="7" Grid.ColumnSpan="2" Content="Импортировать коды" HorizontalAlignment="Center"  VerticalAlignment="Center" Command="{Binding ImportCodesCommand}"/>
+
+                </Grid>
+            </TabItem>
+            <TabItem Header="Продукция">
+                <Grid x:Name="BottleGrid"  Background="#FFE5E5E5">
+                    <DataGrid ItemsSource="{Binding Bottles}">
+                       
+                    </DataGrid>
+                </Grid>
+            </TabItem>
+
+            <TabItem Header="Короба">
+                <Grid x:Name="BoxGrid"  Background="#FFE5E5E5">
+                    <DataGrid ItemsSource="{Binding Boxes}">
+
+                    </DataGrid>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Паллеты">
+                <Grid x:Name="PalletGrid"  Background="#FFE5E5E5">
+                    <Grid.RowDefinitions>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                    </Grid.RowDefinitions>
+                    
+                    <DataGrid ItemsSource="{Binding Pallets}" Grid.Column="0" Grid.Row="0" Grid.RowSpan="7">
+
+                    </DataGrid>
+                    <Button Grid.Column="0" Grid.Row="8"  Content="Создать карту раскладки" HorizontalAlignment="Right" Margin="10"  VerticalAlignment="Center" Command="{Binding CreateCardCommand}"/>
+
+                </Grid>
+            </TabItem>
+        </TabControl>
+    </Grid>
+</Window>
